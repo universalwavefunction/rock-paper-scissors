@@ -7,14 +7,13 @@ function computerPlay() {
 }
 
 function userPlay() {
-  let choice = prompt("Choose rock, paper, or scissors: ");
-  //toLowerCase doesn't work here, try something else
-  if (choice.toLowerCase() == "rock" || choice.toLowerCase() == "paper" || choice.toLowerCase() == "scissors") {
-    return choice;
+  let choice = prompt("Pick rock, paper, or scissors");
+  choice = choice.toLowerCase();
+  while (choice != "rock" && choice != "paper" && choice != "scissors") {
+    choice = prompt("you have to pick between rock, paper, or scissors");
+    console.log(choice);
   }
-  else {
-    console.log("you have to pick between rock, paper, or scissors");
-  }
+  return choice;
 }
 
 function playRound(computer_choice, player_choice) {
@@ -56,13 +55,16 @@ function game() {
     let player_choice = userPlay();
     let computer_choice = computerPlay();
     let winner = playRound(computer_choice, player_choice);
+    console.log(winner);
       if (winner == 0) {
         computer_wins += 1;
+        console.log(computer_wins + " " + player_wins);
         console.log("computer score is: " + computer_wins);
         console.log("Computer wins this round");
       }
       else if (winner == 1) {
         player_wins += 1;
+        console.log(computer_wins + " " + player_wins);
         console.log("player score is: " + player_wins);
         console.log("You win this round!");
       }
